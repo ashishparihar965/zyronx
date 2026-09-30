@@ -81,6 +81,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -91,6 +92,7 @@ body {
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
 }
 
 /* Subtle esports background grid overlay */
@@ -99,7 +101,7 @@ body::before {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-image: 
     radial-gradient(rgba(255, 94, 0, 0.05) 1px, transparent 1px),
@@ -459,6 +461,7 @@ button {
   color: var(--text-muted);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: -0.5rem;
 }
@@ -472,6 +475,7 @@ button {
 .hero-trust-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.8rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-light);
@@ -1795,6 +1799,10 @@ button {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
   .nav-links {
     position: fixed;
     top: 74px;
@@ -1818,21 +1826,83 @@ button {
     pointer-events: auto;
   }
 
+  .header-actions .btn,
+  #headerDownloadBtn {
+    display: none;
+  }
+
   .mobile-menu-toggle {
     display: flex;
   }
 
+  .hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
   .hero-title {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
+    word-break: break-word;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+  }
+
+  .hero-cta-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .apk-info-subtext {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .hero-trust-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
   }
 
   .stats-container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.7rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
   }
 
   .stat-item:nth-child(2)::after {
     display: none;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+    word-break: break-word;
+  }
+
+  .section-description {
+    font-size: 0.95rem;
   }
 
   .features-grid,
@@ -1841,16 +1911,143 @@ button {
     grid-template-columns: 1fr;
   }
 
+  /* Showcase Card Fix for Mobile */
+  .showcase-banner-section {
+    padding: 3rem 0;
+  }
+
+  .showcase-card {
+    grid-template-columns: 1fr;
+    padding: 2.2rem 1.25rem;
+    gap: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .showcase-content {
+    width: 100%;
+  }
+
+  .showcase-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  .showcase-desc {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
+    word-break: break-word;
+  }
+
+  .showcase-checklist {
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.85rem;
+    margin-bottom: 1.8rem;
+    padding-left: 0;
+  }
+
+  .showcase-checklist li {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    text-align: left;
+    align-items: flex-start;
+    gap: 0.6rem;
+    word-break: break-word;
+  }
+
+  .showcase-checklist svg {
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .showcase-card .btn-lg {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  .poster-preview-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .download-cta-section {
+    padding: 3rem 0;
+  }
+
+  .download-cta-card {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .download-cta-title {
+    font-size: 1.85rem;
+    word-break: break-word;
+  }
+
+  .download-cta-desc {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  .download-cta-card .btn-lg {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.2rem;
   }
 
   .policy-box {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 
   .floating-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .showcase-card {
+    padding: 1.8rem 1rem;
+  }
+
+  .showcase-title {
+    font-size: 1.5rem;
+  }
+
+  .download-cta-title {
+    font-size: 1.6rem;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .stat-item:not(:last-child)::after {
     display: none;
   }
 }
